@@ -12,12 +12,17 @@
 
 uint16_t frames = 0;
 
+#ifdef DOUBLE_BUFFERED
 __eds__ uint8_t GFXDisplayBuffer[2][GFX_BUFFER_SIZE] __attribute__((section("DISPLAY"),space(eds)));
+#else
+__eds__ uint8_t GFXDisplayBuffer[GFX_BUFFER_SIZE] __attribute__((section("DISPLAY"),space(eds)));
+#endif
 
 volatile int fb_ready = 0;
 volatile int vsync = 0;
 int next_fb = 0;
 
+#ifdef DOUBLE_BUFFERED
 void __attribute__((interrupt, auto_psv))_GFX1Interrupt(void) 
 {
 	static int lines = 0;
@@ -39,6 +44,17 @@ void __attribute__((interrupt, auto_psv))_GFX1Interrupt(void)
 	}
 	_GFX1IF = 0;
 }
+#else
+void __attribute__((interrupt, auto_psv))_GFX1Interrupt(void) 
+{
+    // Wait until the vertical sync
+    if(_VMRGNIF) {
+        vsync = 0;
+        _VMRGNIF = 0;
+    }
+    _GFX1IF = 0;
+}
+#endif
 
 void config_graphics(void) 
 {
@@ -47,15 +63,18 @@ void config_graphics(void)
 
     // Display buffer:
     G1DPADRL = (unsigned long)(GFXDisplayBuffer) & 0xFFFF;
-    G1DPADRH = (unsigned long)(GFXDisplayBuffer) >>16 & 0xFF;
 
     // Work area 1
     G1W1ADRL = (unsigned long)(GFXDisplayBuffer) & 0xFFFF;
-    G1W1ADRH = (unsigned long)(GFXDisplayBuffer) >>16 & 0xFF;
 
     // Work area 2
     G1W2ADRL = (unsigned long)(GFXDisplayBuffer) & 0xFFFF;
+
+    #ifdef DOUBLE_BUFFERED
+    G1DPADRH = (unsigned long)(GFXDisplayBuffer) >>16 & 0xFF;
+    G1W1ADRH = (unsigned long)(GFXDisplayBuffer) >>16 & 0xFF;
     G1W2ADRH = (unsigned long)(GFXDisplayBuffer) >>16 & 0xFF;
+    #endif
 
 
     G1PUW = HOR_RES;
@@ -207,8 +226,13 @@ void waitForBufferFlip()
 {
 //    while(!_CMDMPT) continue; // Wait for GPU to finish drawing
     while((!_CMDMPT) | _IPUBUSY | _RCCBUSY | _CHRBUSY) continue; // Wait for IPU, RCC, and CHR GPUs to finish drawing
-    fb_ready = 1;
-    while(fb_ready) continue; // wait for vsync
+    #ifdef DOUBLE_BUFFERED
+        fb_ready = 1;
+        while(fb_ready) continue; // wait for vsync
+    #else
+        vsync = 1;
+        while(vsync) continue; // wait for vsync
+    #endif
 }
 
 void swapBuffers() 
@@ -284,9 +308,11 @@ void cleanup(void)
 void clearbuffers(void)
 {
     // clear buffers
+    #ifdef DOUBLE_BUFFERED
     rcc_setdest(GFXDisplayBuffer[0]);
     blank_background();
     rcc_setdest(GFXDisplayBuffer[1]);
+    #endif
     blank_background();
 }
 

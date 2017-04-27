@@ -1,6 +1,7 @@
 #ifndef GPU_H 
 #define GPU_H 
 
+//#define DOUBLE_BUFFERED 1
 
 #define CLOCKDIV 23
 #define HOR_RES 320UL
@@ -11,7 +12,12 @@
 #define VER_FRONT_PORCH 10
 #define VER_PULSE_WIDTH 5
 #define VER_BACK_PORCH  10
+
+#ifdef DOUBLE_BUFFERED
 #define BPP 2
+#else
+#define BPP 4
+#endif
 
 #define VENST_FUDGE 0
 #define HENST_FUDGE -6
@@ -42,7 +48,11 @@
 
 extern uint16_t frames;
 
+#ifdef DOUBLE_BUFFERED
 extern __eds__ uint8_t GFXDisplayBuffer[2][GFX_BUFFER_SIZE] __attribute__((section("DISPLAY"),space(eds)));
+#else
+extern __eds__ uint8_t GFXDisplayBuffer[GFX_BUFFER_SIZE] __attribute__((section("DISPLAY"),space(eds)));
+#endif
 
 void __attribute__((interrupt, auto_psv))_GFX1Interrupt(void);
 void config_graphics(void);

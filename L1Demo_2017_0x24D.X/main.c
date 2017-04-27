@@ -51,14 +51,22 @@ int main(void)
 	clearbuffers();
  	
  	uint16_t c1 = 0;
-	uint16_t c2 = rgb_2_565(1, 3, 240);
+	uint16_t c2 = rgb_2_565(19, 32, 190);
 	uint16_t c3 = rgb_2_565(179, 180, 175);
 	uint16_t c4 = rgb_2_565(179, 180, 175);
+
+	#ifndef DOUBLE_BUFFERED
+	uint16_t c5 = rgb_2_565(179, 8, 8);
+	#endif 
 
  	clut_set(0, c1);  
  	clut_set(1, c2);
  	clut_set(2, c3);
     clut_set(3, c4);
+
+    #ifndef DOUBLE_BUFFERED
+    clut_set(4, c5);
+    #endif
 
 	loadAllSprites();
 	
@@ -72,8 +80,10 @@ int main(void)
     // Draw
 	while (1) 
 	{
-		swapBuffers();  // Before drawing the next frame, we must swap buffers
-		
+		#ifdef DOUBLE_BUFFERED
+			swapBuffers();  // Before drawing the next frame, we must swap buffers
+		#endif
+
 		// DRAW FRAME
         //----------------------------------------------------------------------
 		if(frames < 60*5)					// Fake loading screen
@@ -105,12 +115,10 @@ int main(void)
 		else if(frames < 60*(5+8+10))		// BSOD - lol
 		{
 			rcc_color(1);
-			rcc_draw(0, 0, HOR_RES-1, VER_RES-1);
+			rcc_draw(1, 0, HOR_RES-3, VER_RES-1);
 
 			rcc_color(2);
 			rcc_draw(HOR_RES/2 - 30, 100, 60, 20);
-
-
 
 			chr_fg_color(2);
 			chr_bg_color(3);
@@ -136,11 +144,14 @@ int main(void)
 			sprintf(buf, "WINDOWS");
 			chr_print(buf,HOR_RES/2 - 20,105,1);
 		}
-		
+		else if(frames < 60*(5+8+10+10))
+		{
+			rcc_color(4);
+			rcc_draw(60, 200, 200, 40);
+		}
+
 		drawBorder(0);
         //----------------------------------------------------------------------
-        
-		//drawBorder(0x92);       // Draw border around demo
 		cleanup();              // Housekeeping for VGA signaling
 		waitForBufferFlip();    // For next vsync
 		frames++;               // Increment frame count
