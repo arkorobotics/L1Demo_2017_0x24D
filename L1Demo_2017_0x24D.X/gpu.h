@@ -21,19 +21,20 @@
 #define PIX_W 1
 #define PIX_H (VER_RES/HOR_RES)
  
-#define CHR_FGCOLOR	     0x5000
-#define CHR_BGCOLOR	     0x5100
+#define CHR_FGCOLOR	     	 0x5000
+#define CHR_BGCOLOR	     	 0x5100
 #define CHR_FONTBASE         0x5200
 #define CHR_PRINTCHAR        0x5300
+#define CHR_PRINTCHARTRANS	 0x5380
 #define CHR_TXTAREASTART     0x5800
 #define CHR_TXTAREAEND       0x5900
 #define CHR_PRINTPOS	     0x5A00
-#define RCC_SRCADDR	     0x6200
+#define RCC_SRCADDR	     	 0x6200
 #define RCC_DESTADDR	     0x6300
 #define RCC_RECTSIZE	     0x6400
-#define RCC_COLOR	     0x6600
+#define RCC_COLOR	     	 0x6600
 #define RCC_STARTCOPY	     0x6700
-#define IPU_SRCADDR	     0x7100
+#define IPU_SRCADDR	     	 0x7100
 #define IPU_DESTADDR         0x7200
 #define IPU_DECOMPRESS       0x7400
 
@@ -46,8 +47,10 @@ extern __eds__ uint8_t GFXDisplayBuffer[2][GFX_BUFFER_SIZE] __attribute__((secti
 void __attribute__((interrupt, auto_psv))_GFX1Interrupt(void);
 void config_graphics(void);
 void config_chr(void);
-void chr_print(char *c, uint16_t x, uint16_t y);
+void chr_print(char *c, uint16_t x, uint16_t y, uint8_t transparent);
 void rcc_color(unsigned int color);
+void chr_fg_color(unsigned int color);
+void chr_bg_color(unsigned int color);
 void rcc_setdest(__eds__ uint8_t *buf);
 void gpu_setfb(__eds__ uint8_t *buf);
 void waitForBufferFlip(void);

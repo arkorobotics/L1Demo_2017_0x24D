@@ -141,31 +141,32 @@ void config_chr(void)
 
 // Thanks Jamis for this function :P
 int maxCharHeight = ((int)VER_RES)-21;
-void chr_print(char *c, uint16_t x, uint16_t y) 
+void chr_print(char *c, uint16_t x, uint16_t y, uint8_t transparent) 
 {
 
     if (y > maxCharHeight) {
         y = maxCharHeight;
     }
-    /*
-    int maxCharWidth = ((int)HOR_RES) - (6 * strlen(c)) - 1; // dumb math. bad at \n's
-    if (x > maxCharWidth) {
-        x = maxCharWidth;
-    }
-    */
+
     while(_CMDFUL) continue;
     G1CMDL = x<<12 | y;
     G1CMDH = CHR_PRINTPOS | (x>>4); // CHR_PRINTPOS = 0x5A00
     Nop();
 
     while(*c != NULL) {
-    while(_CMDFUL) continue;
-    G1CMDL = *c;
-    G1CMDH = CHR_PRINTCHAR;
-//        G1CMDH = CHR_PRINTCHARTRANS; // transparent
-    Nop();
+        while(_CMDFUL) continue;
+        G1CMDL = *c;
+        if(transparent == 0)
+        {
+            G1CMDH = CHR_PRINTCHAR;
+        }
+        else
+        {
+            G1CMDH = CHR_PRINTCHARTRANS; // transparent
+        }
+        Nop();
 
-    c++;
+        c++;
     }
 }
 
@@ -174,7 +175,19 @@ void rcc_color(unsigned int color)
 	G1CMDL = color;
 	G1CMDH = RCC_COLOR;
 }
+
+void chr_fg_color(unsigned int color) 
+{
+    G1CMDL = color;
+    G1CMDH = CHR_FGCOLOR;
+}
  
+void chr_bg_color(unsigned int color) 
+{
+    G1CMDL = color;
+    G1CMDH = CHR_BGCOLOR;
+}
+
 void rcc_setdest(__eds__ uint8_t *buf) 
 {
 	while(!_CMDMPT) continue; // Wait for GPU to finish drawing
