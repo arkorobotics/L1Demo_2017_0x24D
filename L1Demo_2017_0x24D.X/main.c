@@ -55,18 +55,10 @@ int main(void)
 	uint16_t c3 = rgb_2_565(179, 180, 175);
 	uint16_t c4 = rgb_2_565(179, 180, 175);
 
-	#ifndef DOUBLE_BUFFERED
-	uint16_t c5 = rgb_2_565(179, 8, 8);
-	#endif 
-
  	clut_set(0, c1);  
  	clut_set(1, c2);
  	clut_set(2, c3);
     clut_set(3, c4);
-
-    #ifndef DOUBLE_BUFFERED
-    clut_set(4, c5);
-    #endif
 
 	loadAllSprites();
 	
@@ -77,6 +69,8 @@ int main(void)
 	char buf[255];
 	char greets[] = "GREETS TO CHARLIEX ~ COINE ~ DATAGRAM ~ FSPHIL ~ HOTDOGS ~ JKING ~ JAMIS ~ MMCA ~ MR1337357";
     
+    uint8_t flipper = 0;
+
     // Draw
 	while (1) 
 	{
@@ -144,10 +138,23 @@ int main(void)
 			sprintf(buf, "WINDOWS");
 			chr_print(buf,HOR_RES/2 - 20,105,1);
 		}
-		else if(frames < 60*(5+8+10+10))
+		else //if(frames < 60*(5+8+10+10))
 		{
-			rcc_color(4);
-			rcc_draw(60, 200, 200, 40);
+			if(flipper == 0)
+			{
+				loadSpriteCLUT(0);
+				flipper++;
+			}
+			else if(flipper == 1)
+			{
+				blank_background();
+				flipper++;
+			}
+			else
+			{
+				drawSprite(rand() % 310,rand() % 470, 0, 0);
+				flipper++;
+			}
 		}
 
 		drawBorder(0);

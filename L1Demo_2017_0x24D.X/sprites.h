@@ -26,12 +26,12 @@
 #define SPR_INT_BORD_B 7
 
 struct Sprite {
-	 uint8_t width;  // Width (in pixels)
-	 uint8_t height; // Height (in pixels)
-	 uint8_t bitres; // Bits per Pixel
- 	 uint8_t trans;  // Transparency
- 	 uint8_t rotate; // Rotation, 0: none, 1: 90 cw, 2: 180, 3: 90 ccw
-	__prog__ uint8_t *data;  // Pointer to sprite pixel data
+	 uint16_t width;  // Width (in pixels)
+	 uint16_t height; // Height (in pixels)
+	 uint16_t bitres; // Bits per Pixel
+ 	 uint16_t trans;  // Transparency
+ 	 uint16_t rotate; // Rotation, 0: none, 1: 90 cw, 2: 180, 3: 90 ccw
+	__prog__ uint16_t *data;  // Pointer to sprite pixel data
 };
 
 struct Particle
@@ -46,13 +46,16 @@ struct Particle
 
 extern struct Sprite s[MAX_SPRITES];
 
+extern uint16_t color_array[8];
+
 extern __eds__ struct Particle p[MAX_PARTICLES];
 extern int numPart;
 
-void loadAllSprites(void);
-void inline drawSprite(uint16_t x, uint16_t y, uint8_t id, uint8_t rotation);
+void inline loadAllSprites(void);
+void inline loadSpriteCLUT(uint16_t id);
+void inline drawSprite(uint16_t x, uint16_t y, uint16_t id, uint16_t rotation);
 int inline nrange(double a, double b);
-void drawSpriteRotation(uint16_t x, uint16_t y, uint8_t id, float rotation);
+void drawSpriteRotation(uint16_t x, uint16_t y, uint16_t id, float rotation);
 void addParticle(void);
 
 

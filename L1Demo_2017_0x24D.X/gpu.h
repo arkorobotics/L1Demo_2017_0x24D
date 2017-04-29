@@ -56,6 +56,8 @@ extern __eds__ uint8_t GFXDisplayBuffer[GFX_BUFFER_SIZE] __attribute__((section(
 
 void __attribute__((interrupt, auto_psv))_GFX1Interrupt(void);
 void config_graphics(void);
+void config_clut();
+void clut_set(uint8_t index, uint16_t color);
 void config_chr(void);
 void chr_print(char *c, uint16_t x, uint16_t y, uint8_t transparent);
 void rcc_color(unsigned int color);

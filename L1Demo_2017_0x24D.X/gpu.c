@@ -270,7 +270,7 @@ void fast_pixel(unsigned long ax, unsigned long ay)
 	G1CMDL = ax;
 	G1CMDH = RCC_DESTADDR | ax>>16;
 
-	G1CMDL = 0x1006; // This needs to be changed for non 80x
+	G1CMDL = 0x1001; // This needs to be changed for non 80x
 	G1CMDH = RCC_RECTSIZE;
 
 	while(_CMDFUL) continue;
