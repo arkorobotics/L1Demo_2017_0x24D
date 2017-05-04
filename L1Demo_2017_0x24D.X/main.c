@@ -60,6 +60,7 @@ int main(void)
  	clut_set(2, c3);
     clut_set(3, c4);
 
+    clut_set(15, 0x00);	// Black Background
 	loadAllSprites();
 	
 	uint8_t x_trans = 0;
@@ -120,7 +121,7 @@ int main(void)
 			chr_print(buf,20,150,1);
 			sprintf(buf, " 	* Current application will be terminated.");
 			chr_print(buf,20,190,1);
-			sprintf(buf, " 	* ERROR: CPU refused to open shit demos.");
+			sprintf(buf, " 	* ERROR: CPU refused to load shit demos.");
 			chr_print(buf,20,210,1);
 			sprintf(buf, " 	* Press any key or just give up already.");
 			chr_print(buf,20,230,1);
@@ -157,7 +158,7 @@ int main(void)
 			}
 		}
 
-		drawBorder(0);
+		drawBorder(15);
         //----------------------------------------------------------------------
 		cleanup();              // Housekeeping for VGA signaling
 		waitForBufferFlip();    // For next vsync

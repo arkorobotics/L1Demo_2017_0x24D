@@ -282,7 +282,8 @@ void fast_pixel(unsigned long ax, unsigned long ay)
 void blank_background(void) 
 {
 	//rcc_color(0xff);
-	rcc_color(0x0);
+	//rcc_color(0x0);
+    rcc_color(15);
 	rcc_draw(0, 0, HOR_RES-1, VER_RES);
 }
 
@@ -301,8 +302,9 @@ void cleanup(void)
 	// Clean right column
 	//rcc_color(0xe0); // neat effect
 	//rcc_color(0xff); // white
-	rcc_color(0x00);
-	rcc_draw(HOR_RES-1,0, 1,VER_RES);
+	//rcc_color(0x00);
+	rcc_color(15);
+    rcc_draw(HOR_RES-1,0, 1,VER_RES);
 }
 
 void clearbuffers(void)

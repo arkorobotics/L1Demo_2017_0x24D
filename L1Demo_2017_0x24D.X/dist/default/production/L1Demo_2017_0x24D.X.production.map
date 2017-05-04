@@ -117,20 +117,20 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200              0x13f6          0x1df1  (7665)
 .const                      0x15f6               0x118           0x1a4  (420)
-_01aae9b459052123           0x170e              0x36f0          0x5268  (21096)
-_01aae95859052123           0x4dfe              0x368e          0x51d5  (20949)
-_01aae8fc59052123           0x848c              0x30e8          0x495c  (18780)
-_012f7c385905224c           0xb574              0x1ff4          0x2fee  (12270)
-.text                       0xd568               0xc9c          0x12ea  (4842)
-.dinit                      0xe204               0x848           0xc6c  (3180)
-.text                       0xea4c               0x228           0x33c  (828)
-_01aaea1059052123           0xec74               0x1f8           0x2f4  (756)
-.text                       0xee6c               0x138           0x1d4  (468)
-.init.delay32               0xefa4                0x1c            0x2a  (42)
-.text                       0xefc0                0x16            0x21  (33)
-.shared.dinit               0xefd6                 0x2             0x3  (3)
+_01bae9b4590ab742           0x170e              0x36f0          0x5268  (21096)
+_01bae958590ab742           0x4dfe              0x368e          0x51d5  (20949)
+_01bae8fc590ab742           0x848c              0x30e8          0x495c  (18780)
+_012f7c38590ab894           0xb574               0xbf4          0x11ee  (4590)
+.dinit                      0xc168               0x848           0xc6c  (3180)
+.text                       0xc9b0               0x83c           0xc5a  (3162)
+_01baea10590ab742           0xd1ec               0x1f8           0x2f4  (756)
+.text                       0xd3e4               0x138           0x1d4  (468)
+_012f7bdc590ab894           0xd51c                0x20            0x30  (48)
+.init.delay32               0xd53c                0x1c            0x2a  (42)
+.text                       0xd558                0x16            0x21  (33)
+.shared.dinit               0xd56e                 0x2             0x3  (3)
 
-                 Total program memory used (bytes):        0x164c4  (91332) 34%
+                 Total program memory used (bytes):        0x13d28  (81192) 31%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -150,11 +150,11 @@ section                    address      alignment gaps    total length  (dec)
 .nbss                        0x81c                   0             0x2  (2)
 .ndata                       0x81e                   0             0x2  (2)
 .nbss                        0x820                   0             0x2  (2)
-.bss                         0x822                   0           0x218  (536)
+.bss                         0x822                   0           0x310  (784)
 FONTS                       0x4ff8                   0           0xc08  (3080)
 DISPLAY                     0x5c00                   0         0x12c00  (76800)
 
-                 Total data memory used (bytes):        0x13a42  (80450) 81%
+                 Total data memory used (bytes):        0x13b3a  (80698) 82%
 
 
 Dynamic Memory Usage
@@ -162,9 +162,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0xa3a                              0x45be  (17854)
+stack                        0xb32                              0x44c6  (17606)
 
-                 Maximum dynamic memory (bytes):         0x45be  (17854)
+                 Maximum dynamic memory (bytes):         0x44c6  (17606)
 
 
 External Symbols in Data Memory (by address):
@@ -176,8 +176,8 @@ External Symbols in Data Memory (by address):
                     0x081a                  _maxCharHeight
                     0x081c                  _numPart
                     0x0822                  _color_array
-                    0x0832                  _s
-                    0x08cc                  _p
+                    0x0838                  _s
+                    0x09c4                  _p
                     0x4ff8                  _FontStart
                     0x5c00                  _GFXDisplayBuffer
 
@@ -191,8 +191,8 @@ External Symbols in Data Memory (by name):
                     0x081a                  _maxCharHeight
                     0x0818                  _next_fb
                     0x081c                  _numPart
-                    0x08cc                  _p
-                    0x0832                  _s
+                    0x09c4                  _p
+                    0x0838                  _s
                     0x0816                  _vsync
 
 External Symbols in Program Memory (by address):
@@ -257,30 +257,32 @@ External Symbols in Program Memory (by address):
                   0x001596                  ___udivsi3
                   0x0015b6                  _srand
                   0x0015c4                  _rand
-                  0x0015ea                  ___mulsi3
                   0x0015ea                  ___mulp32peds3
                   0x0015ea                  ___mulp32eds3
+                  0x0015ea                  ___mulsi3
                   0x00b574                  _SpriteMap
-                  0x00d568                  _loadAllSprites
-                  0x00dc80                  _loadSpriteCLUT
-                  0x00dd72                  _drawSprite
-                  0x00deec                  _nrange
-                  0x00df12                  _drawSpriteRotation
-                  0x00e098                  _addParticle
-                  0x00ea4c                  _main
-                  0x00ee6c                  _config_timer
-                  0x00ee82                  __T1Interrupt
-                  0x00efa4                  ___delay32
-                  0x00efc0                  _rgb_2_565
+                  0x00c9b0                  _loadAllSprites
+                  0x00cadc                  _loadSpriteCLUT
+                  0x00cb70                  _drawSprite
+                  0x00cca4                  _nrange
+                  0x00ccca                  _drawSpriteRotation
+                  0x00ce52                  _addParticle
+                  0x00cfbe                  _main
+                  0x00d3e4                  _config_timer
+                  0x00d3fa                  __T1Interrupt
+                  0x00d51c                  _SpriteInfoMap
+                  0x00d53c                  ___delay32
+                  0x00d558                  _rgb_2_565
 
 External Symbols in Program Memory (by name):
 
+                  0x00d51c                  _SpriteInfoMap
                   0x00b574                  _SpriteMap
                   0x001084                  __DefaultInterrupt
                   0x0002e0                  __GFX1Interrupt
-                  0x00ee82                  __T1Interrupt
+                  0x00d3fa                  __T1Interrupt
                   0x00108a                  ___addsf3
-                  0x00efa4                  ___delay32
+                  0x00d53c                  ___delay32
                   0x001148                  ___divsf3
                   0x001472                  ___eqsf2
                   0x0011d0                  ___fixsfsi
@@ -313,7 +315,7 @@ External Symbols in Program Memory (by name):
                   0x00022c                  __psv_init
                   0x000200                  __resetPRI
                   0x001360                  __sincosf
-                  0x00e098                  _addParticle
+                  0x00ce52                  _addParticle
                   0x00051c                  _blank_background
                   0x000470                  _chr_bg_color
                   0x000468                  _chr_fg_color
@@ -324,20 +326,20 @@ External Symbols in Program Memory (by name):
                   0x0003d6                  _config_chr
                   0x0003c0                  _config_clut
                   0x000300                  _config_graphics
-                  0x00ee6c                  _config_timer
+                  0x00d3e4                  _config_timer
                   0x001144                  _cosf
                   0x000570                  _drawBorder
                   0x000604                  _drawLineS
-                  0x00dd72                  _drawSprite
-                  0x00df12                  _drawSpriteRotation
+                  0x00cb70                  _drawSprite
+                  0x00ccca                  _drawSpriteRotation
                   0x0004f0                  _fast_pixel
                   0x0014f4                  _fmodf
                   0x000486                  _gpu_setfb
                   0x000606                  _line
-                  0x00d568                  _loadAllSprites
-                  0x00dc80                  _loadSpriteCLUT
-                  0x00ea4c                  _main
-                  0x00deec                  _nrange
+                  0x00c9b0                  _loadAllSprites
+                  0x00cadc                  _loadSpriteCLUT
+                  0x00cfbe                  _main
+                  0x00cca4                  _nrange
                   0x0005a6                  _radians
                   0x0015c4                  _rand
                   0x000460                  _rcc_color
@@ -345,7 +347,7 @@ External Symbols in Program Memory (by name):
                   0x000478                  _rcc_setdest
                   0x0005c0                  _realtoint
                   0x00070a                  _render
-                  0x00efc0                  _rgb_2_565
+                  0x00d558                  _rgb_2_565
                   0x001432                  _sinf
                   0x0015b6                  _srand
                   0x000528                  _swapBuffers
@@ -528,48 +530,48 @@ __CONFIG1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x436a
+.debug_info       0x000000       0x438f
  *(.debug_info)
  .debug_info      0x000000        0x6f7 build/default/production/main.o
  .debug_info      0x0006f7        0x263 build/default/production/music.o
  .debug_info      0x00095a       0x28cf build/default/production/gpu.o
- .debug_info      0x003229        0x62b build/default/production/sprites.o
- .debug_info      0x003854        0x93e build/default/production/audio.o
- .debug_info      0x004192        0x1d8 build/default/production/color.o
+ .debug_info      0x003229        0x650 build/default/production/sprites.o
+ .debug_info      0x003879        0x93e build/default/production/audio.o
+ .debug_info      0x0041b7        0x1d8 build/default/production/color.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x689
+.debug_abbrev     0x000000        0x664
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0xee build/default/production/main.o
  .debug_abbrev    0x0000ee         0x4e build/default/production/music.o
  .debug_abbrev    0x00013c        0x23a build/default/production/gpu.o
- .debug_abbrev    0x000376        0x1a7 build/default/production/sprites.o
- .debug_abbrev    0x00051d        0x10d build/default/production/audio.o
- .debug_abbrev    0x00062a         0x5f build/default/production/color.o
+ .debug_abbrev    0x000376        0x182 build/default/production/sprites.o
+ .debug_abbrev    0x0004f8        0x10d build/default/production/audio.o
+ .debug_abbrev    0x000605         0x5f build/default/production/color.o
 
-.debug_line       0x000000        0x6c5
+.debug_line       0x000000        0x60d
  *(.debug_line)
- .debug_line      0x000000        0x14a build/default/production/main.o
- .debug_line      0x00014a         0x25 build/default/production/music.o
- .debug_line      0x00016f        0x23d build/default/production/gpu.o
- .debug_line      0x0003ac        0x1d0 build/default/production/sprites.o
- .debug_line      0x00057c         0xca build/default/production/audio.o
- .debug_line      0x000646         0x7f build/default/production/color.o
+ .debug_line      0x000000        0x14b build/default/production/main.o
+ .debug_line      0x00014b         0x25 build/default/production/music.o
+ .debug_line      0x000170        0x23f build/default/production/gpu.o
+ .debug_line      0x0003af        0x115 build/default/production/sprites.o
+ .debug_line      0x0004c4         0xca build/default/production/audio.o
+ .debug_line      0x00058e         0x7f build/default/production/color.o
 
-.debug_frame      0x000000        0x40e
+.debug_frame      0x000000        0x3e2
  *(.debug_frame)
  .debug_frame     0x000000         0x58 build/default/production/main.o
  .debug_frame     0x000058        0x214 build/default/production/gpu.o
- .debug_frame     0x00026c        0x132 build/default/production/sprites.o
- .debug_frame     0x00039e         0x4c build/default/production/audio.o
- .debug_frame     0x0003ea         0x24 build/default/production/color.o
+ .debug_frame     0x00026c        0x106 build/default/production/sprites.o
+ .debug_frame     0x000372         0x4c build/default/production/audio.o
+ .debug_frame     0x0003be         0x24 build/default/production/color.o
 
-.debug_str        0x000000        0x1b6
+.debug_str        0x000000        0x1b5
  *(.debug_str)
  .debug_str       0x000000         0x1b build/default/production/main.o
  .debug_str       0x00001b        0x148 build/default/production/gpu.o
- .debug_str       0x000163         0x2e build/default/production/sprites.o
- .debug_str       0x000191         0x25 build/default/production/audio.o
+ .debug_str       0x000163         0x2d build/default/production/sprites.o
+ .debug_str       0x000190         0x25 build/default/production/audio.o
 
 .debug_loc
  *(.debug_loc)
@@ -578,18 +580,18 @@ __CONFIG1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x301
+                  0x000000        0x313
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x1b build/default/production/main.o
  .debug_pubnames
                   0x00001b        0x1e3 build/default/production/gpu.o
  .debug_pubnames
-                  0x0001fe         0xaf build/default/production/sprites.o
+                  0x0001fe         0xc1 build/default/production/sprites.o
  .debug_pubnames
-                  0x0002ad         0x34 build/default/production/audio.o
+                  0x0002bf         0x34 build/default/production/audio.o
  .debug_pubnames
-                  0x0002e1         0x20 build/default/production/color.o
+                  0x0002f3         0x20 build/default/production/color.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1854,7 +1856,7 @@ LOAD data_init
 LOAD shared_data_init
 
 .debug_pubtypes
-                  0x000078        0x445
+                  0x000078        0x454
  .debug_pubtypes
                   0x000078         0x82 build/default/production/main.o
  .debug_pubtypes
@@ -1862,84 +1864,84 @@ LOAD shared_data_init
  .debug_pubtypes
                   0x00010c        0x2bb build/default/production/gpu.o
  .debug_pubtypes
-                  0x0003c7         0x43 build/default/production/sprites.o
+                  0x0003c7         0x52 build/default/production/sprites.o
  .debug_pubtypes
-                  0x00040a         0x88 build/default/production/audio.o
+                  0x000419         0x88 build/default/production/audio.o
  .debug_pubtypes
-                  0x000492         0x2b build/default/production/color.o
+                  0x0004a1         0x2b build/default/production/color.o
 
 __c30_signature
-                  0x0004bd         0xd2
+                  0x0004cc         0xd2
  __c30_signature
-                  0x0004bd          0x6 build/default/production/main.o
+                  0x0004cc          0x6 build/default/production/main.o
  __c30_signature
-                  0x0004c3          0x6 build/default/production/music.o
+                  0x0004d2          0x6 build/default/production/music.o
  __c30_signature
-                  0x0004c9          0x6 build/default/production/gpu.o
+                  0x0004d8          0x6 build/default/production/gpu.o
  __c30_signature
-                  0x0004cf          0x6 build/default/production/sprites.o
+                  0x0004de          0x6 build/default/production/sprites.o
  __c30_signature
-                  0x0004d5          0x6 build/default/production/audio.o
+                  0x0004e4          0x6 build/default/production/audio.o
  __c30_signature
-                  0x0004db          0x6 build/default/production/color.o
+                  0x0004ea          0x6 build/default/production/color.o
  __c30_signature
-                  0x0004e1          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libpic30-elf.a(crt0_extended.o)
+                  0x0004f0          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libpic30-elf.a(crt0_extended.o)
  __c30_signature
-                  0x0004e7          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libpic30-elf.a(data_init_extended.o)
+                  0x0004f6          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libpic30-elf.a(data_init_extended.o)
  __c30_signature
-                  0x0004ed          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libpic30-elf.a(delay32.eo)
+                  0x0004fc          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libpic30-elf.a(delay32.eo)
  __c30_signature
-                  0x0004f3          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(addsf3.eo)
+                  0x000502          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(addsf3.eo)
  __c30_signature
-                  0x0004f9          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(cosf.eo)
+                  0x000508          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(cosf.eo)
  __c30_signature
-                  0x0004ff          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(divsf3.eo)
+                  0x00050e          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(divsf3.eo)
  __c30_signature
-                  0x000505          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fgtge.eo)
+                  0x000514          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fgtge.eo)
  __c30_signature
-                  0x00050b          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fixsfsi.eo)
+                  0x00051a          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fixsfsi.eo)
  __c30_signature
-                  0x000511          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fixunssfsi.eo)
+                  0x000520          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fixunssfsi.eo)
  __c30_signature
-                  0x000517          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(floatsisf.eo)
+                  0x000526          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(floatsisf.eo)
  __c30_signature
-                  0x00051d          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(floatunsisf.eo)
+                  0x00052c          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(floatunsisf.eo)
  __c30_signature
-                  0x000523          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fpack.eo)
+                  0x000532          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fpack.eo)
  __c30_signature
-                  0x000529          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(funpack.eo)
+                  0x000538          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(funpack.eo)
  __c30_signature
-                  0x00052f          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(funpack2.eo)
+                  0x00053e          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(funpack2.eo)
  __c30_signature
-                  0x000535          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(futil.eo)
+                  0x000544          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(futil.eo)
  __c30_signature
-                  0x00053b          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(mulsf3.eo)
+                  0x00054a          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(mulsf3.eo)
  __c30_signature
-                  0x000541          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(sincosf.eo)
+                  0x000550          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(sincosf.eo)
  __c30_signature
-                  0x000547          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(sinf.eo)
+                  0x000556          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(sinf.eo)
  __c30_signature
-                  0x00054d          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(umodsi3.eo)
+                  0x00055c          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(umodsi3.eo)
  __c30_signature
-                  0x000553          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(errno.eo)
+                  0x000562          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(errno.eo)
  __c30_signature
-                  0x000559          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fcompare.eo)
+                  0x000568          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fcompare.eo)
  __c30_signature
-                  0x00055f          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(feqltle.eo)
+                  0x00056e          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(feqltle.eo)
  __c30_signature
-                  0x000565          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(floatdisf.eo)
+                  0x000574          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(floatdisf.eo)
  __c30_signature
-                  0x00056b          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(floatundisf.eo)
+                  0x00057a          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(floatundisf.eo)
  __c30_signature
-                  0x000571          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fmodf.eo)
+                  0x000580          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fmodf.eo)
  __c30_signature
-                  0x000577          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fmodrem.eo)
+                  0x000586          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(fmodrem.eo)
  __c30_signature
-                  0x00057d          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(udivsi3.eo)
+                  0x00058c          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(udivsi3.eo)
  __c30_signature
-                  0x000583          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libc-elf.a(rand.eo)
+                  0x000592          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libc-elf.a(rand.eo)
  __c30_signature
-                  0x000589          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(mulsi3.eo)
+                  0x000598          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(mulsi3.eo)
 
 .nbss               0x0800         0x1a
  .nbss              0x0800         0x12 build/default/production/audio.o
@@ -1964,12 +1966,12 @@ __c30_signature
  .nbss              0x0820          0x2 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libm-elf.a(errno.eo)
                     0x0820                  _errno
 
-.bss                0x0822        0x218
- .bss               0x0822        0x212 build/default/production/sprites.o
+.bss                0x0822        0x310
+ .bss               0x0822        0x30a build/default/production/sprites.o
                     0x0822                  _color_array
-                    0x0832                  _s
-                    0x08cc                  _p
- .bss               0x0a34          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libc-elf.a(rand.eo)
+                    0x0838                  _s
+                    0x09c4                  _p
+ .bss               0x0b2c          0x6 /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libc-elf.a(rand.eo)
 
 DISPLAY             0x5c00      0x12c00
  DISPLAY            0x5c00      0x12c00 build/default/production/gpu.o
@@ -2002,60 +2004,64 @@ FONTS               0x4ff8        0xc08
 .const              0x95f6        0x118 load address 0x0015f6  
  .const             0x95f6        0x118 build/default/production/main.o
 
-_01aae9b459052123
+_01bae9b4590ab742
                   0x00170e       0x36f0
- _01aae9b459052123
+ _01bae9b4590ab742
                   0x00170e       0x36f0 build/default/production/audio.o
 
-_01aae95859052123
+_01bae958590ab742
                   0x004dfe       0x368e
- _01aae95859052123
+ _01bae958590ab742
                   0x004dfe       0x368e build/default/production/audio.o
 
-_01aae8fc59052123
+_01bae8fc590ab742
                   0x00848c       0x30e8
- _01aae8fc59052123
+ _01bae8fc590ab742
                   0x00848c       0x30e8 build/default/production/audio.o
 
-_012f7c385905224c
-                  0x00b574       0x1ff4
- _012f7c385905224c
-                  0x00b574       0x1ff4 build/default/production/sprites.o
+_012f7c38590ab894
+                  0x00b574        0xbf4
+ _012f7c38590ab894
+                  0x00b574        0xbf4 build/default/production/sprites.o
                   0x00b574                  _SpriteMap
 
-.text             0x00d568        0xc9c
- .text            0x00d568        0xc9c build/default/production/sprites.o
-                  0x00d568                  _loadAllSprites
-                  0x00dc80                  _loadSpriteCLUT
-                  0x00dd72                  _drawSprite
-                  0x00deec                  _nrange
-                  0x00df12                  _drawSpriteRotation
-                  0x00e098                  _addParticle
+.dinit            0x00c168        0x848
+ .dinit           0x00c168        0x848 data_init
 
-.dinit            0x00e204        0x848
- .dinit           0x00e204        0x848 data_init
+.text             0x00c9b0        0x83c
+ .text            0x00c9b0        0x60e build/default/production/sprites.o
+                  0x00c9b0                  _loadAllSprites
+                  0x00cadc                  _loadSpriteCLUT
+                  0x00cb70                  _drawSprite
+                  0x00cca4                  _nrange
+                  0x00ccca                  _drawSpriteRotation
+                  0x00ce52                  _addParticle
+ .text            0x00cfbe        0x22e build/default/production/main.o
+                  0x00cfbe                  _main
 
-.text             0x00ea4c        0x228
- .text            0x00ea4c        0x228 build/default/production/main.o
-                  0x00ea4c                  _main
+_01baea10590ab742
+                  0x00d1ec        0x1f8
+ _01baea10590ab742
+                  0x00d1ec        0x1f8 build/default/production/audio.o
 
-_01aaea1059052123
-                  0x00ec74        0x1f8
- _01aaea1059052123
-                  0x00ec74        0x1f8 build/default/production/audio.o
+.text             0x00d3e4        0x138
+ .text            0x00d3e4        0x138 build/default/production/audio.o
+                  0x00d3e4                  _config_timer
+                  0x00d3fa                  __T1Interrupt
 
-.text             0x00ee6c        0x138
- .text            0x00ee6c        0x138 build/default/production/audio.o
-                  0x00ee6c                  _config_timer
-                  0x00ee82                  __T1Interrupt
+_012f7bdc590ab894
+                  0x00d51c         0x20
+ _012f7bdc590ab894
+                  0x00d51c         0x20 build/default/production/sprites.o
+                  0x00d51c                  _SpriteInfoMap
 
-.init.delay32     0x00efa4         0x1c
- .init.delay32    0x00efa4         0x1c /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libpic30-elf.a(delay32.eo)
-                  0x00efa4                  ___delay32
+.init.delay32     0x00d53c         0x1c
+ .init.delay32    0x00d53c         0x1c /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libpic30-elf.a(delay32.eo)
+                  0x00d53c                  ___delay32
 
-.text             0x00efc0         0x16
- .text            0x00efc0         0x16 build/default/production/color.o
-                  0x00efc0                  _rgb_2_565
+.text             0x00d558         0x16
+ .text            0x00d558         0x16 build/default/production/color.o
+                  0x00d558                  _rgb_2_565
 
-.shared.dinit     0x00efd6          0x2
- .shared.dinit    0x00efd6          0x2 shared_data_init
+.shared.dinit     0x00d56e          0x2
+ .shared.dinit    0x00d56e          0x2 shared_data_init
