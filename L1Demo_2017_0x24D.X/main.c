@@ -121,7 +121,7 @@ int main(void)
 			chr_print(buf,20,150,1);
 			sprintf(buf, " 	* Current application will be terminated.");
 			chr_print(buf,20,190,1);
-			sprintf(buf, " 	* ERROR: CPU refused to load shit demos.");
+			sprintf(buf, " 	* ERROR: CPU refused to load shit demo.");
 			chr_print(buf,20,210,1);
 			sprintf(buf, " 	* Press any key or just give up already.");
 			chr_print(buf,20,230,1);
@@ -143,7 +143,8 @@ int main(void)
 		{
 			if(flipper == 0)
 			{
-				loadSpriteCLUT(0);
+				//loadSpriteCLUT(0);
+				loadSpriteCLUT(1);
 				flipper++;
 			}
 			else if(flipper == 1)
@@ -153,7 +154,8 @@ int main(void)
 			}
 			else
 			{
-				drawSprite(rand() % 310,rand() % 470, 0, 0);
+				//drawSprite(rand() % 310,rand() % 470, 0, 0);
+				drawSprite(58, 83, 1, 0, 1);
 				flipper++;
 			}
 		}

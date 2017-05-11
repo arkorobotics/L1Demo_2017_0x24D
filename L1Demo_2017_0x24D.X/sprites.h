@@ -75,7 +75,7 @@ extern int numPart;
 
 void inline loadAllSprites(void);
 void inline loadSpriteCLUT(uint16_t id);
-void inline drawSprite(uint16_t x, uint16_t y, uint16_t id, uint16_t rotation);
+void inline drawSprite(uint16_t x, uint16_t y, uint16_t id, uint16_t rotation, uint8_t crt);
 int inline nrange(double a, double b);
 void drawSpriteRotation(uint16_t x, uint16_t y, uint16_t id, float rotation);
 void addParticle(void);
