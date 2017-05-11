@@ -116,21 +116,21 @@ Program Memory  [Origin = 0x200, Length = 0x2a9f8]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200              0x15be          0x209d  (8349)
-.const                      0x17be               0x118           0x1a4  (420)
-_01bb6c385913eab9           0x18d6              0x7b98          0xb964  (47460)
-_01bae9b45913e525           0x946e              0x36f0          0x5268  (21096)
-_01bae9585913e525           0xcb5e              0x368e          0x51d5  (20949)
-_01bae8fc5913e525          0x101ec              0x30e8          0x495c  (18780)
-.dinit                     0x132d4               0x848           0xc6c  (3180)
-.text                      0x13b1c               0xa36           0xf51  (3921)
-_01baea105913e525          0x14552               0x1f8           0x2f4  (756)
-.text                      0x1474a               0x138           0x1d4  (468)
-_01bb6bdc5913eab9          0x14882                0x40            0x60  (96)
-.init.delay32              0x148c2                0x1c            0x2a  (42)
-.text                      0x148de                0x16            0x21  (33)
-.shared.dinit              0x148f4                 0x2             0x3  (3)
+.const                      0x17be               0x162           0x213  (531)
+_01bb6c385913eab9           0x1920              0x7b98          0xb964  (47460)
+_01bae9b45913e525           0x94b8              0x36f0          0x5268  (21096)
+_01bae9585913e525           0xcba8              0x368e          0x51d5  (20949)
+_01bae8fc5913e525          0x10236              0x30e8          0x495c  (18780)
+.dinit                     0x1331e               0x848           0xc6c  (3180)
+.text                      0x13b66               0xacc          0x1032  (4146)
+_01baea105913e525          0x14632               0x1f8           0x2f4  (756)
+.text                      0x1482a               0x138           0x1d4  (468)
+_01bb6bdc5913eab9          0x14962                0x40            0x60  (96)
+.init.delay32              0x149a2                0x1c            0x2a  (42)
+.text                      0x149be                0x16            0x21  (33)
+.shared.dinit              0x149d4                 0x2             0x3  (3)
 
-                 Total program memory used (bytes):        0x1ea71  (125553) 47%
+                 Total program memory used (bytes):        0x1ebc1  (125889) 48%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -260,29 +260,29 @@ External Symbols in Program Memory (by address):
                   0x0017b2                  ___mulp32peds3
                   0x0017b2                  ___mulp32eds3
                   0x0017b2                  ___mulsi3
-                  0x0018d6                  _SpriteMap
-                  0x013b1c                  _loadAllSprites
-                  0x013d76                  _loadSpriteCLUT
-                  0x013e20                  _drawSprite
-                  0x013f64                  _nrange
-                  0x013f94                  _drawSpriteRotation
-                  0x014150                  _addParticle
-                  0x0142c8                  _main
-                  0x01474a                  _config_timer
-                  0x014760                  __T1Interrupt
-                  0x014882                  _SpriteInfoMap
-                  0x0148c2                  ___delay32
-                  0x0148de                  _rgb_2_565
+                  0x001920                  _SpriteMap
+                  0x013b66                  _loadAllSprites
+                  0x013dc0                  _loadSpriteCLUT
+                  0x013e6a                  _drawSprite
+                  0x013fae                  _nrange
+                  0x013fde                  _drawSpriteRotation
+                  0x01419a                  _addParticle
+                  0x014312                  _main
+                  0x01482a                  _config_timer
+                  0x014840                  __T1Interrupt
+                  0x014962                  _SpriteInfoMap
+                  0x0149a2                  ___delay32
+                  0x0149be                  _rgb_2_565
 
 External Symbols in Program Memory (by name):
 
-                  0x014882                  _SpriteInfoMap
-                  0x0018d6                  _SpriteMap
+                  0x014962                  _SpriteInfoMap
+                  0x001920                  _SpriteMap
                   0x00124c                  __DefaultInterrupt
                   0x0002e0                  __GFX1Interrupt
-                  0x014760                  __T1Interrupt
+                  0x014840                  __T1Interrupt
                   0x001252                  ___addsf3
-                  0x0148c2                  ___delay32
+                  0x0149a2                  ___delay32
                   0x001310                  ___divsf3
                   0x00163a                  ___eqsf2
                   0x001398                  ___fixsfsi
@@ -315,7 +315,7 @@ External Symbols in Program Memory (by name):
                   0x00022c                  __psv_init
                   0x000200                  __resetPRI
                   0x001528                  __sincosf
-                  0x014150                  _addParticle
+                  0x01419a                  _addParticle
                   0x00051e                  _blank_background
                   0x000472                  _chr_bg_color
                   0x00046a                  _chr_fg_color
@@ -326,20 +326,20 @@ External Symbols in Program Memory (by name):
                   0x0003d8                  _config_chr
                   0x0003c2                  _config_clut
                   0x000300                  _config_graphics
-                  0x01474a                  _config_timer
+                  0x01482a                  _config_timer
                   0x00130c                  _cosf
                   0x000572                  _drawBorder
                   0x00061a                  _drawLineS
-                  0x013e20                  _drawSprite
-                  0x013f94                  _drawSpriteRotation
+                  0x013e6a                  _drawSprite
+                  0x013fde                  _drawSpriteRotation
                   0x0004f2                  _fast_pixel
                   0x0016bc                  _fmodf
                   0x000488                  _gpu_setfb
                   0x00061c                  _line
-                  0x013b1c                  _loadAllSprites
-                  0x013d76                  _loadSpriteCLUT
-                  0x0142c8                  _main
-                  0x013f64                  _nrange
+                  0x013b66                  _loadAllSprites
+                  0x013dc0                  _loadSpriteCLUT
+                  0x014312                  _main
+                  0x013fae                  _nrange
                   0x0005a8                  _radians
                   0x00178c                  _rand
                   0x000462                  _rcc_color
@@ -347,7 +347,7 @@ External Symbols in Program Memory (by name):
                   0x00047a                  _rcc_setdest
                   0x0005c8                  _realtoint
                   0x000734                  _render
-                  0x0148de                  _rgb_2_565
+                  0x0149be                  _rgb_2_565
                   0x0015fa                  _sinf
                   0x00177e                  _srand
                   0x00052a                  _swapBuffers
@@ -549,14 +549,14 @@ __CONFIG1
  .debug_abbrev    0x0004f8        0x10d build/default/production/audio.o
  .debug_abbrev    0x000605         0x5f build/default/production/color.o
 
-.debug_line       0x000000        0x62c
+.debug_line       0x000000        0x645
  *(.debug_line)
- .debug_line      0x000000        0x14a build/default/production/main.o
- .debug_line      0x00014a         0x25 build/default/production/music.o
- .debug_line      0x00016f        0x245 build/default/production/gpu.o
- .debug_line      0x0003b4        0x12f build/default/production/sprites.o
- .debug_line      0x0004e3         0xca build/default/production/audio.o
- .debug_line      0x0005ad         0x7f build/default/production/color.o
+ .debug_line      0x000000        0x163 build/default/production/main.o
+ .debug_line      0x000163         0x25 build/default/production/music.o
+ .debug_line      0x000188        0x245 build/default/production/gpu.o
+ .debug_line      0x0003cd        0x12f build/default/production/sprites.o
+ .debug_line      0x0004fc         0xca build/default/production/audio.o
+ .debug_line      0x0005c6         0x7f build/default/production/color.o
 
 .debug_frame      0x000000        0x3c8
  *(.debug_frame)
@@ -2001,67 +2001,67 @@ FONTS               0x4ff8        0xc08
  .ivt._T1Interrupt
                   0x00001a          0x2 build/default/production/audio.o
 
-.const              0x97be        0x118 load address 0x0017be  
- .const             0x97be        0x118 build/default/production/main.o
+.const              0x97be        0x162 load address 0x0017be  
+ .const             0x97be        0x162 build/default/production/main.o
 
 _01bb6c385913eab9
-                  0x0018d6       0x7b98
+                  0x001920       0x7b98
  _01bb6c385913eab9
-                  0x0018d6       0x7b98 build/default/production/sprites.o
-                  0x0018d6                  _SpriteMap
+                  0x001920       0x7b98 build/default/production/sprites.o
+                  0x001920                  _SpriteMap
 
 _01bae9b45913e525
-                  0x00946e       0x36f0
+                  0x0094b8       0x36f0
  _01bae9b45913e525
-                  0x00946e       0x36f0 build/default/production/audio.o
+                  0x0094b8       0x36f0 build/default/production/audio.o
 
 _01bae9585913e525
-                  0x00cb5e       0x368e
+                  0x00cba8       0x368e
  _01bae9585913e525
-                  0x00cb5e       0x368e build/default/production/audio.o
+                  0x00cba8       0x368e build/default/production/audio.o
 
 _01bae8fc5913e525
-                  0x0101ec       0x30e8
+                  0x010236       0x30e8
  _01bae8fc5913e525
-                  0x0101ec       0x30e8 build/default/production/audio.o
+                  0x010236       0x30e8 build/default/production/audio.o
 
-.dinit            0x0132d4        0x848
- .dinit           0x0132d4        0x848 data_init
+.dinit            0x01331e        0x848
+ .dinit           0x01331e        0x848 data_init
 
-.text             0x013b1c        0xa36
- .text            0x013b1c        0x7ac build/default/production/sprites.o
-                  0x013b1c                  _loadAllSprites
-                  0x013d76                  _loadSpriteCLUT
-                  0x013e20                  _drawSprite
-                  0x013f64                  _nrange
-                  0x013f94                  _drawSpriteRotation
-                  0x014150                  _addParticle
- .text            0x0142c8        0x28a build/default/production/main.o
-                  0x0142c8                  _main
+.text             0x013b66        0xacc
+ .text            0x013b66        0x7ac build/default/production/sprites.o
+                  0x013b66                  _loadAllSprites
+                  0x013dc0                  _loadSpriteCLUT
+                  0x013e6a                  _drawSprite
+                  0x013fae                  _nrange
+                  0x013fde                  _drawSpriteRotation
+                  0x01419a                  _addParticle
+ .text            0x014312        0x320 build/default/production/main.o
+                  0x014312                  _main
 
 _01baea105913e525
-                  0x014552        0x1f8
+                  0x014632        0x1f8
  _01baea105913e525
-                  0x014552        0x1f8 build/default/production/audio.o
+                  0x014632        0x1f8 build/default/production/audio.o
 
-.text             0x01474a        0x138
- .text            0x01474a        0x138 build/default/production/audio.o
-                  0x01474a                  _config_timer
-                  0x014760                  __T1Interrupt
+.text             0x01482a        0x138
+ .text            0x01482a        0x138 build/default/production/audio.o
+                  0x01482a                  _config_timer
+                  0x014840                  __T1Interrupt
 
 _01bb6bdc5913eab9
-                  0x014882         0x40
+                  0x014962         0x40
  _01bb6bdc5913eab9
-                  0x014882         0x40 build/default/production/sprites.o
-                  0x014882                  _SpriteInfoMap
+                  0x014962         0x40 build/default/production/sprites.o
+                  0x014962                  _SpriteInfoMap
 
-.init.delay32     0x0148c2         0x1c
- .init.delay32    0x0148c2         0x1c /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libpic30-elf.a(delay32.eo)
-                  0x0148c2                  ___delay32
+.init.delay32     0x0149a2         0x1c
+ .init.delay32    0x0149a2         0x1c /Applications/microchip/xc16/v1.26/bin/bin/../../lib/libpic30-elf.a(delay32.eo)
+                  0x0149a2                  ___delay32
 
-.text             0x0148de         0x16
- .text            0x0148de         0x16 build/default/production/color.o
-                  0x0148de                  _rgb_2_565
+.text             0x0149be         0x16
+ .text            0x0149be         0x16 build/default/production/color.o
+                  0x0149be                  _rgb_2_565
 
-.shared.dinit     0x0148f4          0x2
- .shared.dinit    0x0148f4          0x2 shared_data_init
+.shared.dinit     0x0149d4          0x2
+ .shared.dinit    0x0149d4          0x2 shared_data_init

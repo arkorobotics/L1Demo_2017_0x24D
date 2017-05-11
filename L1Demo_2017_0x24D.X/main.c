@@ -139,11 +139,10 @@ int main(void)
 			sprintf(buf, "WINDOWS");
 			chr_print(buf,HOR_RES/2 - 20,105,1);
 		}
-		else //if(frames < 60*(5+8+10+10))
+		else if(frames < 60*(5+8+10+1))
 		{
 			if(flipper == 0)
 			{
-				//loadSpriteCLUT(0);
 				loadSpriteCLUT(1);
 				flipper++;
 			}
@@ -154,12 +153,38 @@ int main(void)
 			}
 			else
 			{
-				//drawSprite(rand() % 310,rand() % 470, 0, 0);
 				drawSprite(58, 83, 1, 0, 1);
 				flipper++;
 			}
 		}
+		else if(frames < 60*(5+8+10+1+1))
+		{
+			flipper = 0;
+		}
+		else // if(frames < 60*(5+8+10+10))
+		{
+			if(flipper == 0)
+			{
+				loadSpriteCLUT(0);
+				flipper++;
+			}
+			else if(flipper == 1)
+			{
+				blank_background();
+				flipper++;
+			}
+			else
+			{
+				drawSprite(120,220, 0, 0, 0);
+				sprintf(buf, "HOPE YOU ENJOYED THAT INTRO SCREEN...");
+				chr_print(buf,50,150,1);
+				sprintf(buf, "... CUZ WE'RE OUT OF PROGRAM MEMORY!");
+				chr_print(buf,50,180,1);
 
+				sprintf(buf, "... ALMOST.");
+				chr_print(buf,50,280,1);
+			}
+		}
 		drawBorder(15);
         //----------------------------------------------------------------------
 		cleanup();              // Housekeeping for VGA signaling
