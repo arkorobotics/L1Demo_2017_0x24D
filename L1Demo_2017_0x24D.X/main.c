@@ -81,7 +81,7 @@ int main(void)
 
 		// DRAW FRAME
         //----------------------------------------------------------------------
-		if(frames < 60*5)					// Fake loading screen
+		if(frames < 500)					// Fake loading screen
 		{
 			rcc_color(2);
 			rcc_draw(60, 200, 200, 40);
@@ -90,11 +90,11 @@ int main(void)
 			rcc_draw(62, 204, 196, 32);
 
 			rcc_color(2);
-			rcc_draw(64, 208, (uint8_t)(frames*0.5), 24);
+			rcc_draw(64, 208, (uint8_t)(frames*0.2), 24);
 
 			rcc_color(0);
 		}
-		else if(frames < 60*8)				// Fake loading screen
+		else if(frames < 680)				// Fake loading screen
 		{
 			rcc_color(2);
 			rcc_draw(60, 200, 200, 40);
@@ -107,7 +107,7 @@ int main(void)
 
 			rcc_color(0);
 		}
-		else if(frames < 60*(5+8+10))		// BSOD - lol
+		else if(frames < 1380)		// BSOD - lol
 		{
 			rcc_color(1);
 			rcc_draw(1, 0, HOR_RES-3, VER_RES-1);
@@ -139,7 +139,7 @@ int main(void)
 			sprintf(buf, "WINDOWS");
 			chr_print(buf,HOR_RES/2 - 20,105,1);
 		}
-		else if(frames < 60*(5+8+10+1))
+		else if(frames < 1440)
 		{
 			if(flipper == 0)
 			{
@@ -157,11 +157,11 @@ int main(void)
 				flipper++;
 			}
 		}
-		else if(frames < 60*(5+8+10+1+1))
+		else if(frames < 1500)
 		{
 			flipper = 0;
 		}
-		else // if(frames < 60*(5+8+10+10))
+		else if(frames < 2000)
 		{
 			if(flipper == 0)
 			{
@@ -185,6 +185,52 @@ int main(void)
 				chr_print(buf,50,280,1);
 			}
 		}
+		else if(frames < 2600)
+		{
+			drawSprite(rand()%280 ,rand()%445, 0, 0, 0);
+		}
+		else if(frames < 2606)
+		{
+			blank_background();
+		}
+		else if(frames < 2900)
+		{
+			line(rand()%310 ,rand()%445, rand()%280 ,rand()%445, rand()%16); 
+		}
+		else if(frames < 3200)
+		{
+			line(rand()%310 ,rand()%445, rand()%280 ,rand()%445, rand()%16); 
+		}
+		else if(frames < 3206)
+		{
+			blank_background();
+
+			uint8_t clut_idx = 0;
+			for(clut_idx=0; clut_idx<15; clut_idx++)
+			{
+				clut_set(clut_idx, rgb_2_565(0,0,clut_idx*(255/15)));
+			}
+		}
+		else if(frames < 42000)
+		{
+			static uint16_t lfsr_a = 0;
+			static uint16_t lfsr_b = 45;
+
+			line(100,200,cos((lfsr_a%360)*3.14f/180)*310,sin((lfsr_b%360)*3.14f/180)*310, lfsr_a%16); 
+			
+			lfsr_a++;
+			lfsr_b++;
+		}
+		else if(frames < 42006)
+		{
+			blank_background();
+		}
+		else if(frames < 42100)
+		{
+			sprintf(buf, "FIN");
+			chr_print(buf,150,240,1);
+		}
+
 		drawBorder(15);
         //----------------------------------------------------------------------
 		cleanup();              // Housekeeping for VGA signaling

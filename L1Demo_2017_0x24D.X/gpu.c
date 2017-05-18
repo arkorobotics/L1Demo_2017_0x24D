@@ -334,7 +334,7 @@ void drawLineS(float x1, float y1, float x2, float y2)
 	return;
 }
 
-void line (float x1, float y1, float x2, float y2) 
+void line (float x1, float y1, float x2, float y2, uint8_t color) 
 {
         unsigned int i;
         double hl=fabs(x2-x1), vl=fabs(y2-y1), length=(hl>vl)?hl:vl;
@@ -342,8 +342,8 @@ void line (float x1, float y1, float x2, float y2)
         for (i=0; i<(int)length; i++) {
                 unsigned long x=(int)(x1+=deltax), y=(int)(y1+=deltay);
                 if ((x<HOR_RES)&&(y<VER_RES)) {
-                        //rcc_color(rand());
-                        rcc_color(0x3);
+                        rcc_color(color);
+                        //rcc_color(0x3);
                         //rcc_draw(x,y, PIX_W,PIX_H);
                         // TODO: fix y displacement
 			fast_pixel(x,y+6);// + i*PIX_H);
@@ -370,8 +370,8 @@ void render (float xa, float ya, float za)
                 scrx[i]=(rx[i]*10)/rz[i]+(HOR_RES/2), scry[i]=(ry[i]*60)/rz[i]+(VER_RES/2);
         }
         for (i=0; i<4; i++) {
-                line (scrx[i], scry[i], scrx[i+4], scry[i+4]);
-                line (scrx[i], scry[i], scrx[(i+1)%4], scry[(i+1)%4]);
-                line (scrx[i+4], scry[i+4], scrx[((i+1)%4)+4], scry[((i+1)%4)+4]);
+                line (scrx[i], scry[i], scrx[i+4], scry[i+4],rand()%16);
+                line (scrx[i], scry[i], scrx[(i+1)%4], scry[(i+1)%4],rand()%16);
+                line (scrx[i+4], scry[i+4], scrx[((i+1)%4)+4], scry[((i+1)%4)+4],rand()%16);
         }
 }
