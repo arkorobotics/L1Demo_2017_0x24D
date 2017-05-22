@@ -64,13 +64,15 @@ int main(void)
 	loadAllSprites();
 	
 	uint8_t x_trans = 0;
-	uint8_t y_trans = 20;
+	uint8_t y_trans = 0;
 	uint16_t time = 0;
 
 	char buf[255];
-	char greets[] = "GREETS TO CHARLIEX ~ COINE ~ DATAGRAM ~ FSPHIL ~ HOTDOGS ~ JKING ~ JAMIS ~ MMCA ~ MR1337357";
+	char greets[] = "                                                GREETS TO CHARLIEX ~ COINE ~ DATAGRAM ~ FSPHIL ~ HOTDOGS ~ JAMIS ~ JBUM ~ JKING ~ MMCA ~ MR1337357                                                                        ";
     
     uint8_t flipper = 0;
+
+    uint8_t mod_value = 5;
 
     // Draw
 	while (1) 
@@ -181,7 +183,7 @@ int main(void)
 				sprintf(buf, "... CUZ WE'RE OUT OF PROGRAM MEMORY!");
 				chr_print(buf,50,180,1);
 
-				sprintf(buf, "... ALMOST.");
+				sprintf(buf, "...OK ...ALMOST.");
 				chr_print(buf,50,280,1);
 			}
 		}
@@ -192,26 +194,15 @@ int main(void)
 		else if(frames < 2606)
 		{
 			blank_background();
-		}
-		else if(frames < 2900)
-		{
-			line(rand()%310 ,rand()%445, rand()%280 ,rand()%445, rand()%16); 
-		}
-		else if(frames < 3200)
-		{
-			line(rand()%310 ,rand()%445, rand()%280 ,rand()%445, rand()%16); 
-		}
-		else if(frames < 3206)
-		{
-			blank_background();
 
 			uint8_t clut_idx = 0;
 			for(clut_idx=0; clut_idx<15; clut_idx++)
 			{
 				clut_set(clut_idx, rgb_2_565(0,0,clut_idx*(255/15)));
 			}
+			clut_set(14, rgb_2_565(255,255,255));
 		}
-		else if(frames < 42000)
+		else if(frames < 3200)
 		{
 			static uint16_t lfsr_a = 0;
 			static uint16_t lfsr_b = 45;
@@ -220,10 +211,124 @@ int main(void)
 			
 			lfsr_a++;
 			lfsr_b++;
+
+			chr_fg_color(14);
+			sprintf(buf, "Loading Eagle PCB...");
+			chr_print(buf,100,350,1);
 		}
-		else if(frames < 42006)
+		else if(frames < 3201)
 		{
 			blank_background();
+
+			uint8_t n = 0;
+			uint8_t color = 0;
+			for(n=0; n<mod_value; n++)
+			{
+				color = n*255/(mod_value-1);
+				clut_set(n, rgb_2_565(color,color,color));
+			}
+			mod_value = mod_value + 5;
+		}
+		else if(frames < 3230)
+		{
+			uint16_t y = 1;
+			uint16_t x = 1;
+			for(y=1; y < VER_RES-1; y++)
+			{
+				for(x=1; x < HOR_RES-1; x++)
+				{
+					rcc_color((x^y) % mod_value);
+					fast_pixel(x,y);
+				}
+			}
+
+			mod_value++;
+		}
+		else if(frames < 3236)
+		{
+			blank_background();
+			// PS crt mode and rgb text
+		}
+		else if(frames < 3600)
+		{
+			sprintf(buf, "OK... THAT WASN'T EAGLE PCB:");
+			chr_print(buf,100,240,1);
+			sprintf(buf, "JUST SOME MATH:");
+			chr_print(buf,100,290,1);
+			sprintf(buf, "color = (x^y) mod count;");
+			chr_print(buf,100,330,1);
+			sprintf(buf, "count++;");
+			chr_print(buf,100,350,1);
+		}
+		else if(frames < 3606)
+		{
+			blank_background();
+
+			clut_set(0, rgb_2_565(0,0,0));
+			clut_set(1, rgb_2_565(0,0,255));
+			clut_set(2, rgb_2_565(0,255,0));
+			clut_set(3, rgb_2_565(255,0,0));
+			clut_set(4, rgb_2_565(120,120,120));
+
+			uint16_t l = 4;
+			for(l = 4; l < VER_RES-4; l=l+4)
+			{
+				rcc_color(4);
+				rcc_draw(4, l, HOR_RES-4, 1);
+			}
+		}
+		else if(frames < 40006)
+		{
+			static uint16_t ly = 290;
+			uint16_t l = 4;
+			for(l = ly; l < ly+180; l++)
+			{
+				if(l%4 == 0)
+				{
+					rcc_color(4);
+					rcc_draw(4, l, HOR_RES-4, 1);
+				}
+				else
+				{
+					rcc_color(0);
+					rcc_draw(4, l, HOR_RES-4, 1);
+				}
+			}
+
+			static uint8_t i = 1;
+			static uint8_t s = 0;
+			for(i = 1; i < 64; i++)
+			{
+				buf[0] = greets[i+s];
+  				buf[1] = '\0';
+
+  				chr_fg_color(1);
+				chr_print(buf,i*6,(sinetable[(uint8_t)(y_trans+(i*2))]>>9)+10+290,1);
+				chr_fg_color(2);
+				chr_print(buf,i*6+5,(sinetable[(uint8_t)(y_trans+(i*2))]>>9)+10+300,1);
+				chr_fg_color(3);
+				chr_print(buf,i*6+10,(sinetable[(uint8_t)(y_trans+(i*2))]>>9)+10+310,1);
+			}
+			
+			y_trans++; 
+
+			if(frames%20 == 0)
+			{
+				s++;
+			}
+			
+			if(s > 150)
+			{
+				s = 0;
+				i = 1;
+				y_trans=0;
+			}
+
+			rcc_color(0);
+			rcc_draw(0, 0, 4, VER_RES-1);
+			rcc_draw(316, 0, 4, VER_RES-1);
+
+			drawSprite(100,160, 2, 0, 0);
 		}
 		else if(frames < 42100)
 		{

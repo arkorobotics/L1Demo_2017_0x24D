@@ -76,7 +76,7 @@ void clearbuffers(void);
 float radians(uint16_t angle);
 int realtoint(float oldval, float oldmin, float oldmax, float newmin, float newmax);
 void drawLineS(float x1, float y1, float x2, float y2);
-void line (float x1, float y1, float x2, float y2, uint8_t color);
-void render (float xa, float ya, float za);
+void line(float x1, float y1, float x2, float y2, uint8_t color);
+void render(float xa, float ya, float za);
 
 #endif

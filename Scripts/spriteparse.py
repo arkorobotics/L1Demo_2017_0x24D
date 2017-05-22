@@ -13,11 +13,11 @@ import numpy as np
 
 #im = Image.open("sonic_small_888_trans.png")
 #im = Image.open("intro_large.png")
-im = Image.open("intro_xl.png")
+im = Image.open("l1header_2017_sm.png")
 pix = im.load()
 
-img_w = 200 #183 #40
-img_h = 148 #136 #51 
+img_w = 40 #183 #40
+img_h = 39 #136 #51 
 
 red = np.uint8(0)
 green = np.uint8(0)
