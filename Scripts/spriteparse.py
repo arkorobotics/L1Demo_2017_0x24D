@@ -13,11 +13,11 @@ import numpy as np
 
 #im = Image.open("sonic_small_888_trans.png")
 #im = Image.open("intro_large.png")
-im = Image.open("l1header_2017_sm.png")
+im = Image.open("icon_cadsoft_eagle.png")
 pix = im.load()
 
-img_w = 40 #183 #40
-img_h = 39 #136 #51 
+img_w = 70 #183 #40
+img_h = 70 #136 #51 
 
 red = np.uint8(0)
 green = np.uint8(0)
