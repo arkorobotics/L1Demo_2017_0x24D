@@ -303,11 +303,11 @@ int main(void)
   				buf[1] = '\0';
 
   				chr_fg_color(1);
-				chr_print(buf,i*6,(sinetable[(uint8_t)(y_trans+(i*2))]>>9)+10+290,1);
+				chr_print(buf,i*6,(sinetable_small[(uint8_t)(y_trans+(i*2))]>>9)+10+290,1);
 				chr_fg_color(2);
-				chr_print(buf,i*6+5,(sinetable[(uint8_t)(y_trans+(i*2))]>>9)+10+300,1);
+				chr_print(buf,i*6+5,(sinetable_small[(uint8_t)(y_trans+(i*2))]>>9)+10+300,1);
 				chr_fg_color(3);
-				chr_print(buf,i*6+10,(sinetable[(uint8_t)(y_trans+(i*2))]>>9)+10+310,1);
+				chr_print(buf,i*6+10,(sinetable_small[(uint8_t)(y_trans+(i*2))]>>9)+10+310,1);
 			}
 			
 			y_trans++; 
