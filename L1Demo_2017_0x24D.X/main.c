@@ -198,7 +198,7 @@ int main(void)
 			uint8_t clut_idx = 0;
 			for(clut_idx=0; clut_idx<15; clut_idx++)
 			{
-				clut_set(clut_idx, rgb_2_565(0,0,clut_idx*(255/15)));
+				clut_set(clut_idx, rgb_2_565(clut_idx*(255/15),0,0));
 			}
 			clut_set(14, rgb_2_565(255,255,255));
 		}
@@ -220,6 +220,12 @@ int main(void)
 		{
 			blank_background();
 
+			uint8_t clut_idx = 0;
+			for(clut_idx=0; clut_idx<15; clut_idx++)
+			{
+				clut_set(clut_idx, rgb_2_565(0,clut_idx*(127/15),0));
+			}
+
 			uint8_t n = 0;
 			uint8_t color = 0;
 			for(n=0; n<mod_value; n++)
@@ -227,6 +233,7 @@ int main(void)
 				color = n*255/(mod_value-1);
 				clut_set(n, rgb_2_565(color,color,color));
 			}
+
 			mod_value = mod_value + 5;
 		}
 		else if(frames < 3230)
@@ -247,10 +254,13 @@ int main(void)
 		else if(frames < 3236)
 		{
 			blank_background();
+			clut_set(14, rgb_2_565(255,255,255));
 			// PS crt mode and rgb text
 		}
 		else if(frames < 3600)
 		{
+			rcc_color(14);
+			chr_fg_color(14);
 			sprintf(buf, "OK... THAT WASN'T EAGLE PCB:");
 			chr_print(buf,100,240,1);
 			sprintf(buf, "JUST SOME MATH:");
@@ -295,6 +305,9 @@ int main(void)
 				}
 			}
 
+			rcc_color(0);
+			rcc_draw(110, 100, 100, 140);
+
 			static uint8_t i = 1;
 			static uint8_t s = 0;
 			for(i = 1; i < 64; i++)
@@ -328,7 +341,7 @@ int main(void)
 			rcc_draw(0, 0, 4, VER_RES-1);
 			rcc_draw(316, 0, 4, VER_RES-1);
 
-			drawSprite(100,160, 2, 0, 0);
+			drawSprite(140,120, 2, 0, 0);
 		}
 		else if(frames < 42100)
 		{
