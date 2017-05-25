@@ -4,7 +4,7 @@
 
 void config_timer(void) 
 {
-	PR1 = 0xFF;
+	PR1 = 0x1FF;
 	_T1IP = 5;	// set interrupt priority
 	_TON  = 1;	// turn on the timer
 	_T1IF = 0;	// reset interrupt flag
@@ -23,7 +23,7 @@ void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void)
     static unsigned short ch1_val = 0;
 	
     if (ch1_ncount < 0x7F80) {
-        ch1_ncount+=song_ch2[idx];
+        ch1_ncount+=song_ch1f[idx]<<1;
     } else {
         ch1_ncount = 0;
     }
@@ -39,7 +39,7 @@ void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void)
     {
 	 	idx++;
 
-		if(idx == sizeof(song_ch2) / sizeof(song_ch2[0]) ) /* loop it! */
+		if(idx == sizeof(song_ch1f) / sizeof(song_ch1f[0]) ) /* loop it! */
 		{
 			idx = 0;
 		}
@@ -50,7 +50,7 @@ void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void)
 	// MIX AND SET AUDIO OUTPUT
 	//PORTB = (sample_1>>2)+(sample_2>>2)+(sample_3>>2); //+(sample_4>>3);
     
-    PORTB = ch1_val;
+    PORTB = ch1_val<<8;
 
 	_T1IF = 0;
 }
