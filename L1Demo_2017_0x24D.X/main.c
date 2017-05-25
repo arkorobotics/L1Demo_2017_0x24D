@@ -130,7 +130,7 @@ int main(void)
 			sprintf(buf, " 	* Press CTRL + ALT + DEL for fun!");
 			chr_print(buf,20,250,1);
 
-			sprintf(buf, "*** SHITDEMO.EXE -  Address 0x49DUCFA");
+			sprintf(buf, "*** SHITDEMO.EXE -  Address 0x49DAFUK");
 			chr_print(buf,20,300,1);
 
 	        sprintf(buf, "Press any key to continue...");
@@ -212,6 +212,8 @@ int main(void)
 			lfsr_a++;
 			lfsr_b++;
 
+			drawSprite(200,130, 2, 0, 0);
+
 			chr_fg_color(14);
 			sprintf(buf, "Loading Eagle PCB...");
 			chr_print(buf,100,350,1);
@@ -279,6 +281,7 @@ int main(void)
 			clut_set(2, rgb_2_565(0,255,0));
 			clut_set(3, rgb_2_565(255,0,0));
 			clut_set(4, rgb_2_565(120,120,120));
+			clut_set(5, rgb_2_565(255,255,255));
 
 			uint16_t l = 4;
 			for(l = 4; l < VER_RES-4; l=l+4)
@@ -286,9 +289,30 @@ int main(void)
 				rcc_color(4);
 				rcc_draw(4, l, HOR_RES-4, 1);
 			}
+
+			rcc_color(0);
+			rcc_draw(110, 100, 100, 140);
 		}
 		else if(frames < 40006)
 		{
+			static uint16_t wav_idx = 208;
+			uint16_t tempb = PORTB;
+			
+			line(wav_idx, 180, wav_idx, 180-(tempb>>11), 5);
+			line(wav_idx, 179, wav_idx, 179+(tempb>>11), 5);
+
+			if(wav_idx>110)
+			{
+				wav_idx--;
+			}
+			else
+			{
+				wav_idx = 208;
+				rcc_color(0);
+				rcc_draw(110, 100, 100, 140);
+			}
+
+			
 			static uint16_t ly = 290;
 			uint16_t l = 4;
 			for(l = ly; l < ly+180; l++)
@@ -304,10 +328,8 @@ int main(void)
 					rcc_draw(4, l, HOR_RES-4, 1);
 				}
 			}
-
-			rcc_color(0);
-			rcc_draw(110, 100, 100, 140);
-
+			
+			
 			static uint8_t i = 1;
 			static uint8_t s = 0;
 			for(i = 1; i < 64; i++)
@@ -340,13 +362,13 @@ int main(void)
 			rcc_color(0);
 			rcc_draw(0, 0, 4, VER_RES-1);
 			rcc_draw(316, 0, 4, VER_RES-1);
-
-			drawSprite(140,120, 2, 0, 0);
+			
+			drawSprite(140,101, 3, 0, 0);
 		}
 		else if(frames < 42100)
 		{
 			sprintf(buf, "FIN");
-			chr_print(buf,150,240,1);
+			chr_print(buf,150,200,1);
 		}
 
 		drawBorder(15);
