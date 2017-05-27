@@ -109,7 +109,7 @@ int main(void)
 
 			rcc_color(0);
 		}
-		else if(frames < 1380)		// BSOD - lol
+		else if(frames < 1700)		// BSOD - lol
 		{
 			rcc_color(1);
 			rcc_draw(1, 0, HOR_RES-3, VER_RES-1);
@@ -141,7 +141,7 @@ int main(void)
 			sprintf(buf, "WINDOWS");
 			chr_print(buf,HOR_RES/2 - 20,105,1);
 		}
-		else if(frames < 1440)
+		else if(frames < 1775)
 		{
 			if(flipper == 0)
 			{
@@ -159,11 +159,11 @@ int main(void)
 				flipper++;
 			}
 		}
-		else if(frames < 1500)
+		else if(frames < 1780)
 		{
 			flipper = 0;
 		}
-		else if(frames < 2000)
+		else if(frames < 2200)
 		{
 			if(flipper == 0)
 			{
@@ -187,7 +187,7 @@ int main(void)
 				chr_print(buf,50,280,1);
 			}
 		}
-		else if(frames < 2600)
+		else if(frames < 2500)
 		{
 			drawSprite(rand()%280 ,rand()%445, 0, 0, 0);
 		}
@@ -202,7 +202,7 @@ int main(void)
 			}
 			clut_set(14, rgb_2_565(255,255,255));
 		}
-		else if(frames < 3200)
+		else if(frames < 3000)
 		{
 			static uint16_t lfsr_a = 0;
 			static uint16_t lfsr_b = 45;
@@ -218,7 +218,7 @@ int main(void)
 			sprintf(buf, "Loading Eagle PCB...");
 			chr_print(buf,100,350,1);
 		}
-		else if(frames < 3201)
+		else if(frames < 3001) // diff 1 above
 		{
 			blank_background();
 
@@ -238,7 +238,7 @@ int main(void)
 
 			mod_value = mod_value + 5;
 		}
-		else if(frames < 3230)
+		else if(frames < 3030)
 		{
 			uint16_t y = 1;
 			uint16_t x = 1;
@@ -253,13 +253,13 @@ int main(void)
 
 			mod_value++;
 		}
-		else if(frames < 3236)
+		else if(frames < 3036)
 		{
 			blank_background();
 			clut_set(14, rgb_2_565(255,255,255));
 			// PS crt mode and rgb text
 		}
-		else if(frames < 3600)
+		else if(frames < 3400)
 		{
 			rcc_color(14);
 			chr_fg_color(14);
@@ -272,7 +272,7 @@ int main(void)
 			sprintf(buf, "count++;");
 			chr_print(buf,100,350,1);
 		}
-		else if(frames < 3606)
+		else if(frames < 3406)
 		{
 			blank_background();
 
