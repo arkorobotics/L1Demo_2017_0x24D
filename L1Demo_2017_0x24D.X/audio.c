@@ -4,7 +4,7 @@
 
 void config_timer(void) 
 {
-	PR1 = 0x7F;
+	PR1 = 0xFF;
 	_T1IP = 5;	// set interrupt priority
 	_TON  = 1;	// turn on the timer
 	_T1IF = 0;	// reset interrupt flag
@@ -28,7 +28,7 @@ void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void)
 
     // Do Channel 1 Stuff
     if (ch1_ncount < 0x7F80) {
-        ch1_ncount += song_ch1f[idx]>>1;
+        ch1_ncount += song_ch1f[idx];
     }
     else
     {
@@ -38,7 +38,7 @@ void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void)
 
     // Do Channel 2 Stuff
     if (ch2_ncount < 0x7F80) {
-        ch2_ncount+=song_ch8f[idx]>>1;
+        ch2_ncount+=song_ch8f[idx];
     }
     else
     {
@@ -48,7 +48,7 @@ void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void)
 
     // Do Channel 3 Stuff
     if (ch3_ncount < 0x7F80) {
-        ch3_ncount+=song_ch15f[idx]>>1;
+        ch3_ncount+=song_ch15f[idx];
     }
     else
     {
