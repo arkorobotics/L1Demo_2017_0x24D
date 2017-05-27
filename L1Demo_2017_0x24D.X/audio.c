@@ -68,7 +68,7 @@ void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void)
 
 		if(idx == sizeof(song_ch15f) / sizeof(song_ch15f[0]) ) /* loop it! */
 		{
-			idx = 0;
+			idx = 0x36c;
 		}
 
 		duration = 0;
